@@ -11,4 +11,4 @@ spring:
         server-addr: ${nacos.server-addr}
 
 nacos:
-  server-addr: nacos.didispace.com:80
+  server-addr: 59.110.236.186:8848
