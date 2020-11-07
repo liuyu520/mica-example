@@ -21,22 +21,27 @@
                     <artifactId>spring-boot-starter-logging</artifactId>
                 </exclusion>
             </exclusions>
+            <version>2.3.5.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
+            <version>2.3.5.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>net.dreamlu</groupId>
             <artifactId>mica-boot</artifactId>
+            <version>1.2.2</version>
         </dependency>
         <dependency>
             <groupId>net.dreamlu</groupId>
             <artifactId>mica-captcha</artifactId>
+            <version>1.2.2</version>
         </dependency>
         <dependency>
             <groupId>net.dreamlu</groupId>
             <artifactId>mica-log4j2</artifactId>
+            <version>1.2.2</version>
         </dependency>
         <!-- swagger begin webflux swagger 支持尚未发布正式版，为了避免代码报错 -->
         <dependency>

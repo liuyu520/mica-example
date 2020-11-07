@@ -29,22 +29,31 @@
         <dependency>
             <groupId>net.dreamlu</groupId>
             <artifactId>mica-boot</artifactId>
+            <version>1.2.2</version>
         </dependency>
         <!-- 验证码 -->
         <dependency>
             <groupId>net.dreamlu</groupId>
             <artifactId>mica-captcha</artifactId>
+            <version>1.2.2</version>
         </dependency>
         <!-- log -->
         <dependency>
             <groupId>net.dreamlu</groupId>
             <artifactId>mica-log4j2</artifactId>
+            <version>1.2.2</version>
         </dependency>
         <!-- swagger -->
         <dependency>
             <groupId>net.dreamlu</groupId>
             <artifactId>mica-plus-swagger</artifactId>
+            <version>1.2.2</version>
         </dependency>
+        <!--<dependency>
+            <groupId>net.dreamlu</groupId>
+            <artifactId>mica-plus-social</artifactId>
+            <version>${version}</version>
+        </dependency>-->
     </dependencies>
 
 </project>
