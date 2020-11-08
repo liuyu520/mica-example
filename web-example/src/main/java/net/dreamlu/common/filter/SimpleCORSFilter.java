@@ -2,8 +2,6 @@ package net.dreamlu.common.filter;
 
 import com.common.bean.AllowOriginDto;
 import com.common.bean.exception.LogicBusinessException;
-import com.common.dict.Const;
-import com.common.util.PropsReadUtil;
 import com.file.hw.props.GenericReadPropsUtil;
 import com.string.widget.util.ValueWidget;
 import org.apache.commons.lang3.ObjectUtils;
@@ -87,7 +85,7 @@ public class SimpleCORSFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
         System.out.println("SimpleCORSFilter init:");
         this.allowOriginDto = new AllowOriginDto();
-        filterConfig.getServletContext().setAttribute(Const.ATTRIBUTE_ALLOW_ORIGIN_DTO, this.allowOriginDto);
+//        filterConfig.getServletContext().setAttribute(Const.ATTRIBUTE_ALLOW_ORIGIN_DTO, this.allowOriginDto);
     }
 
 }

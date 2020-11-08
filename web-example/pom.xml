@@ -72,6 +72,11 @@
             <groupId>nz.net.ultraq.thymeleaf</groupId>
             <artifactId>thymeleaf-layout-dialect</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.kunlunsoft</groupId>
+            <artifactId>io0007</artifactId>
+            <version>0.0.1.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>
