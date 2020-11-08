@@ -29,6 +29,13 @@ mybatis-plus:
       logic-not-delete-value: 1
 
 spring:
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+  mvc:
+    static-path-pattern: /static/**
   thymeleaf:
     mode: html
+    cache: false
 
