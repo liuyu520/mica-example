@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class ThoughtPatternController extends BaseController {
 	private IThoughtPatternService thoughtPatternService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('thoughtPattern:manager')")
 	public String manager() {
 		return "system/thoughtPattern/thoughtPatternList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('thoughtPattern:dataGrid')")
 	@ResponseBody
 	public EasyPage<ThoughtPattern> dataGrid(ThoughtPattern thoughtPattern, PageVO pageVO) {
 		QueryWrapper<ThoughtPattern> ew = new QueryWrapper<ThoughtPattern>(thoughtPattern);
@@ -62,7 +59,6 @@ public class ThoughtPatternController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('thoughtPattern:add')")
 	@ResponseBody
 	public Object add(@Valid ThoughtPattern thoughtPattern) {
 		return status(thoughtPatternService.save(thoughtPattern));
@@ -72,7 +68,6 @@ public class ThoughtPatternController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('thoughtPattern:delete')")
 	@ResponseBody
 	public Object delete(ThoughtPattern thoughtPattern) {
 		return status(thoughtPatternService.removeById(thoughtPattern));
@@ -92,7 +87,6 @@ public class ThoughtPatternController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('thoughtPattern:edit')")
 	@ResponseBody
 	public Object edit(@Valid ThoughtPattern thoughtPattern) {
 		return status(thoughtPatternService.updateById(thoughtPattern));

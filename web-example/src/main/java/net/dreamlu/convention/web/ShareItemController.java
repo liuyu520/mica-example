@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class ShareItemController extends BaseController {
 	private IShareItemService shareItemService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('shareItem:manager')")
 	public String manager() {
 		return "system/shareItem/shareItemList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('shareItem:dataGrid')")
 	@ResponseBody
 	public EasyPage<ShareItem> dataGrid(ShareItem shareItem, PageVO pageVO) {
 		QueryWrapper<ShareItem> ew = new QueryWrapper<ShareItem>(shareItem);
@@ -62,7 +59,6 @@ public class ShareItemController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('shareItem:add')")
 	@ResponseBody
 	public Object add(@Valid ShareItem shareItem) {
 		return status(shareItemService.save(shareItem));
@@ -72,7 +68,6 @@ public class ShareItemController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('shareItem:delete')")
 	@ResponseBody
 	public Object delete(ShareItem shareItem) {
 		return status(shareItemService.removeById(shareItem));
@@ -92,7 +87,6 @@ public class ShareItemController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('shareItem:edit')")
 	@ResponseBody
 	public Object edit(@Valid ShareItem shareItem) {
 		return status(shareItemService.updateById(shareItem));

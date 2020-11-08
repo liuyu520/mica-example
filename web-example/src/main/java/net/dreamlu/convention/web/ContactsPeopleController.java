@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class ContactsPeopleController extends BaseController {
 	private IContactsPeopleService contactsPeopleService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('contactsPeople:manager')")
 	public String manager() {
 		return "system/contactsPeople/contactsPeopleList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('contactsPeople:dataGrid')")
 	@ResponseBody
 	public EasyPage<ContactsPeople> dataGrid(ContactsPeople contactsPeople, PageVO pageVO) {
 		QueryWrapper<ContactsPeople> ew = new QueryWrapper<ContactsPeople>(contactsPeople);
@@ -62,7 +59,6 @@ public class ContactsPeopleController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('contactsPeople:add')")
 	@ResponseBody
 	public Object add(@Valid ContactsPeople contactsPeople) {
 		return status(contactsPeopleService.save(contactsPeople));
@@ -72,7 +68,6 @@ public class ContactsPeopleController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('contactsPeople:delete')")
 	@ResponseBody
 	public Object delete(ContactsPeople contactsPeople) {
 		return status(contactsPeopleService.removeById(contactsPeople));
@@ -92,7 +87,6 @@ public class ContactsPeopleController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('contactsPeople:edit')")
 	@ResponseBody
 	public Object edit(@Valid ContactsPeople contactsPeople) {
 		return status(contactsPeopleService.updateById(contactsPeople));

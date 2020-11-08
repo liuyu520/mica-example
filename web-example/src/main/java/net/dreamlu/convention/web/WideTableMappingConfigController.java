@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class WideTableMappingConfigController extends BaseController {
 	private IWideTableMappingConfigService wideTableMappingConfigService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('wideTableMappingConfig:manager')")
 	public String manager() {
 		return "system/wideTableMappingConfig/wideTableMappingConfigList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('wideTableMappingConfig:dataGrid')")
 	@ResponseBody
 	public EasyPage<WideTableMappingConfig> dataGrid(WideTableMappingConfig wideTableMappingConfig, PageVO pageVO) {
 		QueryWrapper<WideTableMappingConfig> ew = new QueryWrapper<WideTableMappingConfig>(wideTableMappingConfig);
@@ -62,7 +59,6 @@ public class WideTableMappingConfigController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('wideTableMappingConfig:add')")
 	@ResponseBody
 	public Object add(@Valid WideTableMappingConfig wideTableMappingConfig) {
 		return status(wideTableMappingConfigService.save(wideTableMappingConfig));
@@ -72,7 +68,6 @@ public class WideTableMappingConfigController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('wideTableMappingConfig:delete')")
 	@ResponseBody
 	public Object delete(WideTableMappingConfig wideTableMappingConfig) {
 		return status(wideTableMappingConfigService.removeById(wideTableMappingConfig));
@@ -92,7 +87,6 @@ public class WideTableMappingConfigController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('wideTableMappingConfig:edit')")
 	@ResponseBody
 	public Object edit(@Valid WideTableMappingConfig wideTableMappingConfig) {
 		return status(wideTableMappingConfigService.updateById(wideTableMappingConfig));

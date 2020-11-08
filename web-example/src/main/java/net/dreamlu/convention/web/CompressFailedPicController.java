@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class CompressFailedPicController extends BaseController {
 	private ICompressFailedPicService compressFailedPicService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('compressFailedPic:manager')")
 	public String manager() {
 		return "system/compressFailedPic/compressFailedPicList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('compressFailedPic:dataGrid')")
 	@ResponseBody
 	public EasyPage<CompressFailedPic> dataGrid(CompressFailedPic compressFailedPic, PageVO pageVO) {
 		QueryWrapper<CompressFailedPic> ew = new QueryWrapper<CompressFailedPic>(compressFailedPic);
@@ -62,7 +59,6 @@ public class CompressFailedPicController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('compressFailedPic:add')")
 	@ResponseBody
 	public Object add(@Valid CompressFailedPic compressFailedPic) {
 		return status(compressFailedPicService.save(compressFailedPic));
@@ -72,7 +68,6 @@ public class CompressFailedPicController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('compressFailedPic:delete')")
 	@ResponseBody
 	public Object delete(CompressFailedPic compressFailedPic) {
 		return status(compressFailedPicService.removeById(compressFailedPic));
@@ -92,7 +87,6 @@ public class CompressFailedPicController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('compressFailedPic:edit')")
 	@ResponseBody
 	public Object edit(@Valid CompressFailedPic compressFailedPic) {
 		return status(compressFailedPicService.updateById(compressFailedPic));

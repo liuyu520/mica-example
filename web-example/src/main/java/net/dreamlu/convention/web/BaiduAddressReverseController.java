@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class BaiduAddressReverseController extends BaseController {
 	private IBaiduAddressReverseService baiduAddressReverseService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('baiduAddressReverse:manager')")
 	public String manager() {
 		return "system/baiduAddressReverse/baiduAddressReverseList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('baiduAddressReverse:dataGrid')")
 	@ResponseBody
 	public EasyPage<BaiduAddressReverse> dataGrid(BaiduAddressReverse baiduAddressReverse, PageVO pageVO) {
 		QueryWrapper<BaiduAddressReverse> ew = new QueryWrapper<BaiduAddressReverse>(baiduAddressReverse);
@@ -62,7 +59,6 @@ public class BaiduAddressReverseController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('baiduAddressReverse:add')")
 	@ResponseBody
 	public Object add(@Valid BaiduAddressReverse baiduAddressReverse) {
 		return status(baiduAddressReverseService.save(baiduAddressReverse));
@@ -72,7 +68,6 @@ public class BaiduAddressReverseController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('baiduAddressReverse:delete')")
 	@ResponseBody
 	public Object delete(BaiduAddressReverse baiduAddressReverse) {
 		return status(baiduAddressReverseService.removeById(baiduAddressReverse));
@@ -92,7 +87,6 @@ public class BaiduAddressReverseController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('baiduAddressReverse:edit')")
 	@ResponseBody
 	public Object edit(@Valid BaiduAddressReverse baiduAddressReverse) {
 		return status(baiduAddressReverseService.updateById(baiduAddressReverse));

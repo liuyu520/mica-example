@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class TimingTaskItemController extends BaseController {
 	private ITimingTaskItemService timingTaskItemService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('timingTaskItem:manager')")
 	public String manager() {
 		return "system/timingTaskItem/timingTaskItemList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('timingTaskItem:dataGrid')")
 	@ResponseBody
 	public EasyPage<TimingTaskItem> dataGrid(TimingTaskItem timingTaskItem, PageVO pageVO) {
 		QueryWrapper<TimingTaskItem> ew = new QueryWrapper<TimingTaskItem>(timingTaskItem);
@@ -62,7 +59,6 @@ public class TimingTaskItemController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('timingTaskItem:add')")
 	@ResponseBody
 	public Object add(@Valid TimingTaskItem timingTaskItem) {
 		return status(timingTaskItemService.save(timingTaskItem));
@@ -72,7 +68,6 @@ public class TimingTaskItemController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('timingTaskItem:delete')")
 	@ResponseBody
 	public Object delete(TimingTaskItem timingTaskItem) {
 		return status(timingTaskItemService.removeById(timingTaskItem));
@@ -92,7 +87,6 @@ public class TimingTaskItemController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('timingTaskItem:edit')")
 	@ResponseBody
 	public Object edit(@Valid TimingTaskItem timingTaskItem) {
 		return status(timingTaskItemService.updateById(timingTaskItem));

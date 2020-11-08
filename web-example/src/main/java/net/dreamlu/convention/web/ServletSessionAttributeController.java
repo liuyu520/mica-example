@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class ServletSessionAttributeController extends BaseController {
 	private IServletSessionAttributeService servletSessionAttributeService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('servletSessionAttribute:manager')")
 	public String manager() {
 		return "system/servletSessionAttribute/servletSessionAttributeList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('servletSessionAttribute:dataGrid')")
 	@ResponseBody
 	public EasyPage<ServletSessionAttribute> dataGrid(ServletSessionAttribute servletSessionAttribute, PageVO pageVO) {
 		QueryWrapper<ServletSessionAttribute> ew = new QueryWrapper<ServletSessionAttribute>(servletSessionAttribute);
@@ -62,7 +59,6 @@ public class ServletSessionAttributeController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('servletSessionAttribute:add')")
 	@ResponseBody
 	public Object add(@Valid ServletSessionAttribute servletSessionAttribute) {
 		return status(servletSessionAttributeService.save(servletSessionAttribute));
@@ -72,7 +68,6 @@ public class ServletSessionAttributeController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('servletSessionAttribute:delete')")
 	@ResponseBody
 	public Object delete(ServletSessionAttribute servletSessionAttribute) {
 		return status(servletSessionAttributeService.removeById(servletSessionAttribute));
@@ -92,7 +87,6 @@ public class ServletSessionAttributeController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('servletSessionAttribute:edit')")
 	@ResponseBody
 	public Object edit(@Valid ServletSessionAttribute servletSessionAttribute) {
 		return status(servletSessionAttributeService.updateById(servletSessionAttribute));

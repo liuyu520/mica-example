@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class BabyRecordController extends BaseController {
 	private IBabyRecordService babyRecordService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('babyRecord:manager')")
 	public String manager() {
 		return "system/babyRecord/babyRecordList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('babyRecord:dataGrid')")
 	@ResponseBody
 	public EasyPage<BabyRecord> dataGrid(BabyRecord babyRecord, PageVO pageVO) {
 		QueryWrapper<BabyRecord> ew = new QueryWrapper<BabyRecord>(babyRecord);
@@ -62,7 +59,6 @@ public class BabyRecordController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('babyRecord:add')")
 	@ResponseBody
 	public Object add(@Valid BabyRecord babyRecord) {
 		return status(babyRecordService.save(babyRecord));
@@ -72,7 +68,6 @@ public class BabyRecordController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('babyRecord:delete')")
 	@ResponseBody
 	public Object delete(BabyRecord babyRecord) {
 		return status(babyRecordService.removeById(babyRecord));
@@ -92,7 +87,6 @@ public class BabyRecordController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('babyRecord:edit')")
 	@ResponseBody
 	public Object edit(@Valid BabyRecord babyRecord) {
 		return status(babyRecordService.updateById(babyRecord));

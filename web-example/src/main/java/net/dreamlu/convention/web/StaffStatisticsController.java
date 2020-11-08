@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class StaffStatisticsController extends BaseController {
 	private IStaffStatisticsService staffStatisticsService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('staffStatistics:manager')")
 	public String manager() {
 		return "system/staffStatistics/staffStatisticsList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('staffStatistics:dataGrid')")
 	@ResponseBody
 	public EasyPage<StaffStatistics> dataGrid(StaffStatistics staffStatistics, PageVO pageVO) {
 		QueryWrapper<StaffStatistics> ew = new QueryWrapper<StaffStatistics>(staffStatistics);
@@ -62,7 +59,6 @@ public class StaffStatisticsController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('staffStatistics:add')")
 	@ResponseBody
 	public Object add(@Valid StaffStatistics staffStatistics) {
 		return status(staffStatisticsService.save(staffStatistics));
@@ -72,7 +68,6 @@ public class StaffStatisticsController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('staffStatistics:delete')")
 	@ResponseBody
 	public Object delete(StaffStatistics staffStatistics) {
 		return status(staffStatisticsService.removeById(staffStatistics));
@@ -92,7 +87,6 @@ public class StaffStatisticsController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('staffStatistics:edit')")
 	@ResponseBody
 	public Object edit(@Valid StaffStatistics staffStatistics) {
 		return status(staffStatisticsService.updateById(staffStatistics));

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class DiaryController extends BaseController {
 	private IDiaryService diaryService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('diary:manager')")
 	public String manager() {
 		return "system/diary/diaryList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('diary:dataGrid')")
 	@ResponseBody
 	public EasyPage<Diary> dataGrid(Diary diary, PageVO pageVO) {
 		QueryWrapper<Diary> ew = new QueryWrapper<Diary>(diary);
@@ -62,7 +59,6 @@ public class DiaryController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('diary:add')")
 	@ResponseBody
 	public Object add(@Valid Diary diary) {
 		return status(diaryService.save(diary));
@@ -72,7 +68,6 @@ public class DiaryController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('diary:delete')")
 	@ResponseBody
 	public Object delete(Diary diary) {
 		return status(diaryService.removeById(diary));
@@ -92,7 +87,6 @@ public class DiaryController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('diary:edit')")
 	@ResponseBody
 	public Object edit(@Valid Diary diary) {
 		return status(diaryService.updateById(diary));

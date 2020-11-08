@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class DictionaryController extends BaseController {
 	private IDictionaryService dictionaryService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('dictionary:manager')")
 	public String manager() {
 		return "system/dictionary/dictionaryList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('dictionary:dataGrid')")
 	@ResponseBody
 	public EasyPage<Dictionary> dataGrid(Dictionary dictionary, PageVO pageVO) {
 		QueryWrapper<Dictionary> ew = new QueryWrapper<Dictionary>(dictionary);
@@ -62,7 +59,6 @@ public class DictionaryController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('dictionary:add')")
 	@ResponseBody
 	public Object add(@Valid Dictionary dictionary) {
 		return status(dictionaryService.save(dictionary));
@@ -72,7 +68,6 @@ public class DictionaryController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('dictionary:delete')")
 	@ResponseBody
 	public Object delete(Dictionary dictionary) {
 		return status(dictionaryService.removeById(dictionary));
@@ -92,7 +87,6 @@ public class DictionaryController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('dictionary:edit')")
 	@ResponseBody
 	public Object edit(@Valid Dictionary dictionary) {
 		return status(dictionaryService.updateById(dictionary));

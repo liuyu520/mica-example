@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class VoteLogController extends BaseController {
 	private IVoteLogService voteLogService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('voteLog:manager')")
 	public String manager() {
 		return "system/voteLog/voteLogList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('voteLog:dataGrid')")
 	@ResponseBody
 	public EasyPage<VoteLog> dataGrid(VoteLog voteLog, PageVO pageVO) {
 		QueryWrapper<VoteLog> ew = new QueryWrapper<VoteLog>(voteLog);
@@ -62,7 +59,6 @@ public class VoteLogController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('voteLog:add')")
 	@ResponseBody
 	public Object add(@Valid VoteLog voteLog) {
 		return status(voteLogService.save(voteLog));
@@ -72,7 +68,6 @@ public class VoteLogController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('voteLog:delete')")
 	@ResponseBody
 	public Object delete(VoteLog voteLog) {
 		return status(voteLogService.removeById(voteLog));
@@ -92,7 +87,6 @@ public class VoteLogController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('voteLog:edit')")
 	@ResponseBody
 	public Object edit(@Valid VoteLog voteLog) {
 		return status(voteLogService.updateById(voteLog));

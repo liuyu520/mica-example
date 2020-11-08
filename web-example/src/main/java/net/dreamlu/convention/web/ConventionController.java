@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class ConventionController extends BaseController {
 	private IConventionService conventionService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('convention:manager')")
 	public String manager() {
 		return "system/convention/conventionList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('convention:dataGrid')")
 	@ResponseBody
 	public EasyPage<Convention> dataGrid(Convention convention, PageVO pageVO) {
 		QueryWrapper<Convention> ew = new QueryWrapper<Convention>(convention);
@@ -62,7 +59,6 @@ public class ConventionController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('convention:add')")
 	@ResponseBody
 	public Object add(@Valid Convention convention) {
 		return status(conventionService.save(convention));
@@ -72,7 +68,6 @@ public class ConventionController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('convention:delete')")
 	@ResponseBody
 	public Object delete(Convention convention) {
 		return status(conventionService.removeById(convention));
@@ -92,7 +87,6 @@ public class ConventionController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('convention:edit')")
 	@ResponseBody
 	public Object edit(@Valid Convention convention) {
 		return status(conventionService.updateById(convention));

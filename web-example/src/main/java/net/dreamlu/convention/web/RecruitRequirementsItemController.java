@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class RecruitRequirementsItemController extends BaseController {
 	private IRecruitRequirementsItemService recruitRequirementsItemService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('recruitRequirementsItem:manager')")
 	public String manager() {
 		return "system/recruitRequirementsItem/recruitRequirementsItemList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('recruitRequirementsItem:dataGrid')")
 	@ResponseBody
 	public EasyPage<RecruitRequirementsItem> dataGrid(RecruitRequirementsItem recruitRequirementsItem, PageVO pageVO) {
 		QueryWrapper<RecruitRequirementsItem> ew = new QueryWrapper<RecruitRequirementsItem>(recruitRequirementsItem);
@@ -62,7 +59,6 @@ public class RecruitRequirementsItemController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('recruitRequirementsItem:add')")
 	@ResponseBody
 	public Object add(@Valid RecruitRequirementsItem recruitRequirementsItem) {
 		return status(recruitRequirementsItemService.save(recruitRequirementsItem));
@@ -72,7 +68,6 @@ public class RecruitRequirementsItemController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('recruitRequirementsItem:delete')")
 	@ResponseBody
 	public Object delete(RecruitRequirementsItem recruitRequirementsItem) {
 		return status(recruitRequirementsItemService.removeById(recruitRequirementsItem));
@@ -92,7 +87,6 @@ public class RecruitRequirementsItemController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('recruitRequirementsItem:edit')")
 	@ResponseBody
 	public Object edit(@Valid RecruitRequirementsItem recruitRequirementsItem) {
 		return status(recruitRequirementsItemService.updateById(recruitRequirementsItem));

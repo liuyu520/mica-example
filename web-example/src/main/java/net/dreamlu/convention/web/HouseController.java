@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class HouseController extends BaseController {
 	private IHouseService houseService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('house:manager')")
 	public String manager() {
 		return "system/house/houseList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('house:dataGrid')")
 	@ResponseBody
 	public EasyPage<House> dataGrid(House house, PageVO pageVO) {
 		QueryWrapper<House> ew = new QueryWrapper<House>(house);
@@ -62,7 +59,6 @@ public class HouseController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('house:add')")
 	@ResponseBody
 	public Object add(@Valid House house) {
 		return status(houseService.save(house));
@@ -72,7 +68,6 @@ public class HouseController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('house:delete')")
 	@ResponseBody
 	public Object delete(House house) {
 		return status(houseService.removeById(house));
@@ -92,7 +87,6 @@ public class HouseController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('house:edit')")
 	@ResponseBody
 	public Object edit(@Valid House house) {
 		return status(houseService.updateById(house));

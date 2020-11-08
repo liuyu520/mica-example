@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class WideBusinessTableConfigController extends BaseController {
 	private IWideBusinessTableConfigService wideBusinessTableConfigService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('wideBusinessTableConfig:manager')")
 	public String manager() {
 		return "system/wideBusinessTableConfig/wideBusinessTableConfigList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('wideBusinessTableConfig:dataGrid')")
 	@ResponseBody
 	public EasyPage<WideBusinessTableConfig> dataGrid(WideBusinessTableConfig wideBusinessTableConfig, PageVO pageVO) {
 		QueryWrapper<WideBusinessTableConfig> ew = new QueryWrapper<WideBusinessTableConfig>(wideBusinessTableConfig);
@@ -62,7 +59,6 @@ public class WideBusinessTableConfigController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('wideBusinessTableConfig:add')")
 	@ResponseBody
 	public Object add(@Valid WideBusinessTableConfig wideBusinessTableConfig) {
 		return status(wideBusinessTableConfigService.save(wideBusinessTableConfig));
@@ -72,7 +68,6 @@ public class WideBusinessTableConfigController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('wideBusinessTableConfig:delete')")
 	@ResponseBody
 	public Object delete(WideBusinessTableConfig wideBusinessTableConfig) {
 		return status(wideBusinessTableConfigService.removeById(wideBusinessTableConfig));
@@ -92,7 +87,6 @@ public class WideBusinessTableConfigController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('wideBusinessTableConfig:edit')")
 	@ResponseBody
 	public Object edit(@Valid WideBusinessTableConfig wideBusinessTableConfig) {
 		return status(wideBusinessTableConfigService.updateById(wideBusinessTableConfig));

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class ProductBaseInfoController extends BaseController {
 	private IProductBaseInfoService productBaseInfoService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('productBaseInfo:manager')")
 	public String manager() {
 		return "system/productBaseInfo/productBaseInfoList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('productBaseInfo:dataGrid')")
 	@ResponseBody
 	public EasyPage<ProductBaseInfo> dataGrid(ProductBaseInfo productBaseInfo, PageVO pageVO) {
 		QueryWrapper<ProductBaseInfo> ew = new QueryWrapper<ProductBaseInfo>(productBaseInfo);
@@ -62,7 +59,6 @@ public class ProductBaseInfoController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('productBaseInfo:add')")
 	@ResponseBody
 	public Object add(@Valid ProductBaseInfo productBaseInfo) {
 		return status(productBaseInfoService.save(productBaseInfo));
@@ -72,7 +68,6 @@ public class ProductBaseInfoController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('productBaseInfo:delete')")
 	@ResponseBody
 	public Object delete(ProductBaseInfo productBaseInfo) {
 		return status(productBaseInfoService.removeById(productBaseInfo));
@@ -92,7 +87,6 @@ public class ProductBaseInfoController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('productBaseInfo:edit')")
 	@ResponseBody
 	public Object edit(@Valid ProductBaseInfo productBaseInfo) {
 		return status(productBaseInfoService.updateById(productBaseInfo));

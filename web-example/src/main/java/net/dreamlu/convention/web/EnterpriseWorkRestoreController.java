@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class EnterpriseWorkRestoreController extends BaseController {
 	private IEnterpriseWorkRestoreService enterpriseWorkRestoreService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('enterpriseWorkRestore:manager')")
 	public String manager() {
 		return "system/enterpriseWorkRestore/enterpriseWorkRestoreList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('enterpriseWorkRestore:dataGrid')")
 	@ResponseBody
 	public EasyPage<EnterpriseWorkRestore> dataGrid(EnterpriseWorkRestore enterpriseWorkRestore, PageVO pageVO) {
 		QueryWrapper<EnterpriseWorkRestore> ew = new QueryWrapper<EnterpriseWorkRestore>(enterpriseWorkRestore);
@@ -62,7 +59,6 @@ public class EnterpriseWorkRestoreController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('enterpriseWorkRestore:add')")
 	@ResponseBody
 	public Object add(@Valid EnterpriseWorkRestore enterpriseWorkRestore) {
 		return status(enterpriseWorkRestoreService.save(enterpriseWorkRestore));
@@ -72,7 +68,6 @@ public class EnterpriseWorkRestoreController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('enterpriseWorkRestore:delete')")
 	@ResponseBody
 	public Object delete(EnterpriseWorkRestore enterpriseWorkRestore) {
 		return status(enterpriseWorkRestoreService.removeById(enterpriseWorkRestore));
@@ -92,7 +87,6 @@ public class EnterpriseWorkRestoreController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('enterpriseWorkRestore:edit')")
 	@ResponseBody
 	public Object edit(@Valid EnterpriseWorkRestore enterpriseWorkRestore) {
 		return status(enterpriseWorkRestoreService.updateById(enterpriseWorkRestore));

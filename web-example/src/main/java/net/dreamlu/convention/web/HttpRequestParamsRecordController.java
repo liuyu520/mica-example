@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class HttpRequestParamsRecordController extends BaseController {
 	private IHttpRequestParamsRecordService httpRequestParamsRecordService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('httpRequestParamsRecord:manager')")
 	public String manager() {
 		return "system/httpRequestParamsRecord/httpRequestParamsRecordList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('httpRequestParamsRecord:dataGrid')")
 	@ResponseBody
 	public EasyPage<HttpRequestParamsRecord> dataGrid(HttpRequestParamsRecord httpRequestParamsRecord, PageVO pageVO) {
 		QueryWrapper<HttpRequestParamsRecord> ew = new QueryWrapper<HttpRequestParamsRecord>(httpRequestParamsRecord);
@@ -62,7 +59,6 @@ public class HttpRequestParamsRecordController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('httpRequestParamsRecord:add')")
 	@ResponseBody
 	public Object add(@Valid HttpRequestParamsRecord httpRequestParamsRecord) {
 		return status(httpRequestParamsRecordService.save(httpRequestParamsRecord));
@@ -72,7 +68,6 @@ public class HttpRequestParamsRecordController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('httpRequestParamsRecord:delete')")
 	@ResponseBody
 	public Object delete(HttpRequestParamsRecord httpRequestParamsRecord) {
 		return status(httpRequestParamsRecordService.removeById(httpRequestParamsRecord));
@@ -92,7 +87,6 @@ public class HttpRequestParamsRecordController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('httpRequestParamsRecord:edit')")
 	@ResponseBody
 	public Object edit(@Valid HttpRequestParamsRecord httpRequestParamsRecord) {
 		return status(httpRequestParamsRecordService.updateById(httpRequestParamsRecord));

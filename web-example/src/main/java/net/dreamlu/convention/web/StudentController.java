@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class StudentController extends BaseController {
 	private IStudentService studentService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('student:manager')")
 	public String manager() {
 		return "system/student/studentList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('student:dataGrid')")
 	@ResponseBody
 	public EasyPage<Student> dataGrid(Student student, PageVO pageVO) {
 		QueryWrapper<Student> ew = new QueryWrapper<Student>(student);
@@ -62,7 +59,6 @@ public class StudentController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('student:add')")
 	@ResponseBody
 	public Object add(@Valid Student student) {
 		return status(studentService.save(student));
@@ -72,7 +68,6 @@ public class StudentController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('student:delete')")
 	@ResponseBody
 	public Object delete(Student student) {
 		return status(studentService.removeById(student));
@@ -92,7 +87,6 @@ public class StudentController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('student:edit')")
 	@ResponseBody
 	public Object edit(@Valid Student student) {
 		return status(studentService.updateById(student));

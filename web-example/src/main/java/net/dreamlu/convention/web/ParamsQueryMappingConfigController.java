@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class ParamsQueryMappingConfigController extends BaseController {
 	private IParamsQueryMappingConfigService paramsQueryMappingConfigService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('paramsQueryMappingConfig:manager')")
 	public String manager() {
 		return "system/paramsQueryMappingConfig/paramsQueryMappingConfigList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('paramsQueryMappingConfig:dataGrid')")
 	@ResponseBody
 	public EasyPage<ParamsQueryMappingConfig> dataGrid(ParamsQueryMappingConfig paramsQueryMappingConfig, PageVO pageVO) {
 		QueryWrapper<ParamsQueryMappingConfig> ew = new QueryWrapper<ParamsQueryMappingConfig>(paramsQueryMappingConfig);
@@ -62,7 +59,6 @@ public class ParamsQueryMappingConfigController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('paramsQueryMappingConfig:add')")
 	@ResponseBody
 	public Object add(@Valid ParamsQueryMappingConfig paramsQueryMappingConfig) {
 		return status(paramsQueryMappingConfigService.save(paramsQueryMappingConfig));
@@ -72,7 +68,6 @@ public class ParamsQueryMappingConfigController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('paramsQueryMappingConfig:delete')")
 	@ResponseBody
 	public Object delete(ParamsQueryMappingConfig paramsQueryMappingConfig) {
 		return status(paramsQueryMappingConfigService.removeById(paramsQueryMappingConfig));
@@ -92,7 +87,6 @@ public class ParamsQueryMappingConfigController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('paramsQueryMappingConfig:edit')")
 	@ResponseBody
 	public Object edit(@Valid ParamsQueryMappingConfig paramsQueryMappingConfig) {
 		return status(paramsQueryMappingConfigService.updateById(paramsQueryMappingConfig));

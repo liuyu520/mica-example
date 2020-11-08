@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class IntoStaffStatisticsController extends BaseController {
 	private IIntoStaffStatisticsService intoStaffStatisticsService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('intoStaffStatistics:manager')")
 	public String manager() {
 		return "system/intoStaffStatistics/intoStaffStatisticsList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('intoStaffStatistics:dataGrid')")
 	@ResponseBody
 	public EasyPage<IntoStaffStatistics> dataGrid(IntoStaffStatistics intoStaffStatistics, PageVO pageVO) {
 		QueryWrapper<IntoStaffStatistics> ew = new QueryWrapper<IntoStaffStatistics>(intoStaffStatistics);
@@ -62,7 +59,6 @@ public class IntoStaffStatisticsController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('intoStaffStatistics:add')")
 	@ResponseBody
 	public Object add(@Valid IntoStaffStatistics intoStaffStatistics) {
 		return status(intoStaffStatisticsService.save(intoStaffStatistics));
@@ -72,7 +68,6 @@ public class IntoStaffStatisticsController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('intoStaffStatistics:delete')")
 	@ResponseBody
 	public Object delete(IntoStaffStatistics intoStaffStatistics) {
 		return status(intoStaffStatisticsService.removeById(intoStaffStatistics));
@@ -92,7 +87,6 @@ public class IntoStaffStatisticsController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('intoStaffStatistics:edit')")
 	@ResponseBody
 	public Object edit(@Valid IntoStaffStatistics intoStaffStatistics) {
 		return status(intoStaffStatisticsService.updateById(intoStaffStatistics));

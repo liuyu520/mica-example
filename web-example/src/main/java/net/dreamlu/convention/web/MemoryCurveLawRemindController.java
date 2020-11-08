@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class MemoryCurveLawRemindController extends BaseController {
 	private IMemoryCurveLawRemindService memoryCurveLawRemindService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('memoryCurveLawRemind:manager')")
 	public String manager() {
 		return "system/memoryCurveLawRemind/memoryCurveLawRemindList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('memoryCurveLawRemind:dataGrid')")
 	@ResponseBody
 	public EasyPage<MemoryCurveLawRemind> dataGrid(MemoryCurveLawRemind memoryCurveLawRemind, PageVO pageVO) {
 		QueryWrapper<MemoryCurveLawRemind> ew = new QueryWrapper<MemoryCurveLawRemind>(memoryCurveLawRemind);
@@ -62,7 +59,6 @@ public class MemoryCurveLawRemindController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('memoryCurveLawRemind:add')")
 	@ResponseBody
 	public Object add(@Valid MemoryCurveLawRemind memoryCurveLawRemind) {
 		return status(memoryCurveLawRemindService.save(memoryCurveLawRemind));
@@ -72,7 +68,6 @@ public class MemoryCurveLawRemindController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('memoryCurveLawRemind:delete')")
 	@ResponseBody
 	public Object delete(MemoryCurveLawRemind memoryCurveLawRemind) {
 		return status(memoryCurveLawRemindService.removeById(memoryCurveLawRemind));
@@ -92,7 +87,6 @@ public class MemoryCurveLawRemindController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('memoryCurveLawRemind:edit')")
 	@ResponseBody
 	public Object edit(@Valid MemoryCurveLawRemind memoryCurveLawRemind) {
 		return status(memoryCurveLawRemindService.updateById(memoryCurveLawRemind));

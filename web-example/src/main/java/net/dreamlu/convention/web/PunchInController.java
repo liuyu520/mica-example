@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class PunchInController extends BaseController {
 	private IPunchInService punchInService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('punchIn:manager')")
 	public String manager() {
 		return "system/punchIn/punchInList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('punchIn:dataGrid')")
 	@ResponseBody
 	public EasyPage<PunchIn> dataGrid(PunchIn punchIn, PageVO pageVO) {
 		QueryWrapper<PunchIn> ew = new QueryWrapper<PunchIn>(punchIn);
@@ -62,7 +59,6 @@ public class PunchInController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('punchIn:add')")
 	@ResponseBody
 	public Object add(@Valid PunchIn punchIn) {
 		return status(punchInService.save(punchIn));
@@ -72,7 +68,6 @@ public class PunchInController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('punchIn:delete')")
 	@ResponseBody
 	public Object delete(PunchIn punchIn) {
 		return status(punchInService.removeById(punchIn));
@@ -92,7 +87,6 @@ public class PunchInController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('punchIn:edit')")
 	@ResponseBody
 	public Object edit(@Valid PunchIn punchIn) {
 		return status(punchInService.updateById(punchIn));

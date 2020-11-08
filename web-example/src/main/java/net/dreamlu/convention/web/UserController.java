@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class UserController extends BaseController {
 	private IUserService userService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('user:manager')")
 	public String manager() {
 		return "system/user/userList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('user:dataGrid')")
 	@ResponseBody
 	public EasyPage<User> dataGrid(User user, PageVO pageVO) {
 		QueryWrapper<User> ew = new QueryWrapper<User>(user);
@@ -62,7 +59,6 @@ public class UserController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('user:add')")
 	@ResponseBody
 	public Object add(@Valid User user) {
 		return status(userService.save(user));
@@ -72,7 +68,6 @@ public class UserController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('user:delete')")
 	@ResponseBody
 	public Object delete(User user) {
 		return status(userService.removeById(user));
@@ -92,7 +87,6 @@ public class UserController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('user:edit')")
 	@ResponseBody
 	public Object edit(@Valid User user) {
 		return status(userService.updateById(user));

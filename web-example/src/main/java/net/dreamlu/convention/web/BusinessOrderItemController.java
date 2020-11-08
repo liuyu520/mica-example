@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class BusinessOrderItemController extends BaseController {
 	private IBusinessOrderItemService businessOrderItemService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('businessOrderItem:manager')")
 	public String manager() {
 		return "system/businessOrderItem/businessOrderItemList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('businessOrderItem:dataGrid')")
 	@ResponseBody
 	public EasyPage<BusinessOrderItem> dataGrid(BusinessOrderItem businessOrderItem, PageVO pageVO) {
 		QueryWrapper<BusinessOrderItem> ew = new QueryWrapper<BusinessOrderItem>(businessOrderItem);
@@ -62,7 +59,6 @@ public class BusinessOrderItemController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('businessOrderItem:add')")
 	@ResponseBody
 	public Object add(@Valid BusinessOrderItem businessOrderItem) {
 		return status(businessOrderItemService.save(businessOrderItem));
@@ -72,7 +68,6 @@ public class BusinessOrderItemController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('businessOrderItem:delete')")
 	@ResponseBody
 	public Object delete(BusinessOrderItem businessOrderItem) {
 		return status(businessOrderItemService.removeById(businessOrderItem));
@@ -92,7 +87,6 @@ public class BusinessOrderItemController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('businessOrderItem:edit')")
 	@ResponseBody
 	public Object edit(@Valid BusinessOrderItem businessOrderItem) {
 		return status(businessOrderItemService.updateById(businessOrderItem));

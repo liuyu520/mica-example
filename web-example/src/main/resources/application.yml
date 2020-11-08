@@ -27,3 +27,6 @@ mybatis-plus:
       table-underline: true
       logic-delete-value: 0
       logic-not-delete-value: 1
+
+
+

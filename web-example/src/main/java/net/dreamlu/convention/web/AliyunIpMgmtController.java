@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class AliyunIpMgmtController extends BaseController {
 	private IAliyunIpMgmtService aliyunIpMgmtService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('aliyunIpMgmt:manager')")
 	public String manager() {
 		return "system/aliyunIpMgmt/aliyunIpMgmtList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('aliyunIpMgmt:dataGrid')")
 	@ResponseBody
 	public EasyPage<AliyunIpMgmt> dataGrid(AliyunIpMgmt aliyunIpMgmt, PageVO pageVO) {
 		QueryWrapper<AliyunIpMgmt> ew = new QueryWrapper<AliyunIpMgmt>(aliyunIpMgmt);
@@ -62,7 +59,6 @@ public class AliyunIpMgmtController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('aliyunIpMgmt:add')")
 	@ResponseBody
 	public Object add(@Valid AliyunIpMgmt aliyunIpMgmt) {
 		return status(aliyunIpMgmtService.save(aliyunIpMgmt));
@@ -72,7 +68,6 @@ public class AliyunIpMgmtController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('aliyunIpMgmt:delete')")
 	@ResponseBody
 	public Object delete(AliyunIpMgmt aliyunIpMgmt) {
 		return status(aliyunIpMgmtService.removeById(aliyunIpMgmt));
@@ -92,7 +87,6 @@ public class AliyunIpMgmtController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('aliyunIpMgmt:edit')")
 	@ResponseBody
 	public Object edit(@Valid AliyunIpMgmt aliyunIpMgmt) {
 		return status(aliyunIpMgmtService.updateById(aliyunIpMgmt));

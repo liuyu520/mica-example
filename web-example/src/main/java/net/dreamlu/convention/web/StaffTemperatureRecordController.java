@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class StaffTemperatureRecordController extends BaseController {
 	private IStaffTemperatureRecordService staffTemperatureRecordService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('staffTemperatureRecord:manager')")
 	public String manager() {
 		return "system/staffTemperatureRecord/staffTemperatureRecordList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('staffTemperatureRecord:dataGrid')")
 	@ResponseBody
 	public EasyPage<StaffTemperatureRecord> dataGrid(StaffTemperatureRecord staffTemperatureRecord, PageVO pageVO) {
 		QueryWrapper<StaffTemperatureRecord> ew = new QueryWrapper<StaffTemperatureRecord>(staffTemperatureRecord);
@@ -62,7 +59,6 @@ public class StaffTemperatureRecordController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('staffTemperatureRecord:add')")
 	@ResponseBody
 	public Object add(@Valid StaffTemperatureRecord staffTemperatureRecord) {
 		return status(staffTemperatureRecordService.save(staffTemperatureRecord));
@@ -72,7 +68,6 @@ public class StaffTemperatureRecordController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('staffTemperatureRecord:delete')")
 	@ResponseBody
 	public Object delete(StaffTemperatureRecord staffTemperatureRecord) {
 		return status(staffTemperatureRecordService.removeById(staffTemperatureRecord));
@@ -92,7 +87,6 @@ public class StaffTemperatureRecordController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('staffTemperatureRecord:edit')")
 	@ResponseBody
 	public Object edit(@Valid StaffTemperatureRecord staffTemperatureRecord) {
 		return status(staffTemperatureRecordService.updateById(staffTemperatureRecord));

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class RecruitApplyItemController extends BaseController {
 	private IRecruitApplyItemService recruitApplyItemService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('recruitApplyItem:manager')")
 	public String manager() {
 		return "system/recruitApplyItem/recruitApplyItemList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('recruitApplyItem:dataGrid')")
 	@ResponseBody
 	public EasyPage<RecruitApplyItem> dataGrid(RecruitApplyItem recruitApplyItem, PageVO pageVO) {
 		QueryWrapper<RecruitApplyItem> ew = new QueryWrapper<RecruitApplyItem>(recruitApplyItem);
@@ -62,7 +59,6 @@ public class RecruitApplyItemController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('recruitApplyItem:add')")
 	@ResponseBody
 	public Object add(@Valid RecruitApplyItem recruitApplyItem) {
 		return status(recruitApplyItemService.save(recruitApplyItem));
@@ -72,7 +68,6 @@ public class RecruitApplyItemController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('recruitApplyItem:delete')")
 	@ResponseBody
 	public Object delete(RecruitApplyItem recruitApplyItem) {
 		return status(recruitApplyItemService.removeById(recruitApplyItem));
@@ -92,7 +87,6 @@ public class RecruitApplyItemController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('recruitApplyItem:edit')")
 	@ResponseBody
 	public Object edit(@Valid RecruitApplyItem recruitApplyItem) {
 		return status(recruitApplyItemService.updateById(recruitApplyItem));

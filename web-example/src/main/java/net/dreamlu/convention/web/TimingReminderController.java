@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class TimingReminderController extends BaseController {
 	private ITimingReminderService timingReminderService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('timingReminder:manager')")
 	public String manager() {
 		return "system/timingReminder/timingReminderList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('timingReminder:dataGrid')")
 	@ResponseBody
 	public EasyPage<TimingReminder> dataGrid(TimingReminder timingReminder, PageVO pageVO) {
 		QueryWrapper<TimingReminder> ew = new QueryWrapper<TimingReminder>(timingReminder);
@@ -62,7 +59,6 @@ public class TimingReminderController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('timingReminder:add')")
 	@ResponseBody
 	public Object add(@Valid TimingReminder timingReminder) {
 		return status(timingReminderService.save(timingReminder));
@@ -72,7 +68,6 @@ public class TimingReminderController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('timingReminder:delete')")
 	@ResponseBody
 	public Object delete(TimingReminder timingReminder) {
 		return status(timingReminderService.removeById(timingReminder));
@@ -92,7 +87,6 @@ public class TimingReminderController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('timingReminder:edit')")
 	@ResponseBody
 	public Object edit(@Valid TimingReminder timingReminder) {
 		return status(timingReminderService.updateById(timingReminder));

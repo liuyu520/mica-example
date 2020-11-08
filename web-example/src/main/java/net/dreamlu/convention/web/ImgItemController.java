@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class ImgItemController extends BaseController {
 	private IImgItemService imgItemService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('imgItem:manager')")
 	public String manager() {
 		return "system/imgItem/imgItemList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('imgItem:dataGrid')")
 	@ResponseBody
 	public EasyPage<ImgItem> dataGrid(ImgItem imgItem, PageVO pageVO) {
 		QueryWrapper<ImgItem> ew = new QueryWrapper<ImgItem>(imgItem);
@@ -62,7 +59,6 @@ public class ImgItemController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('imgItem:add')")
 	@ResponseBody
 	public Object add(@Valid ImgItem imgItem) {
 		return status(imgItemService.save(imgItem));
@@ -72,7 +68,6 @@ public class ImgItemController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('imgItem:delete')")
 	@ResponseBody
 	public Object delete(ImgItem imgItem) {
 		return status(imgItemService.removeById(imgItem));
@@ -92,7 +87,6 @@ public class ImgItemController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('imgItem:edit')")
 	@ResponseBody
 	public Object edit(@Valid ImgItem imgItem) {
 		return status(imgItemService.updateById(imgItem));

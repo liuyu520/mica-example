@@ -8,7 +8,6 @@ import net.dreamlu.common.result.PageVO;
 import net.dreamlu.convention.model.CommonLargeTable;
 import net.dreamlu.convention.service.ICommonLargeTableService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,13 +33,11 @@ public class CommonLargeTableController extends BaseController {
 	private ICommonLargeTableService commonLargeTableService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('commonLargeTable:manager')")
 	public String manager() {
 		return "system/commonLargeTable/commonLargeTableList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('commonLargeTable:dataGrid')")
 	@ResponseBody
 	public EasyPage<CommonLargeTable> dataGrid(CommonLargeTable commonLargeTable, PageVO pageVO) {
 		QueryWrapper<CommonLargeTable> ew = new QueryWrapper<CommonLargeTable>(commonLargeTable);
@@ -61,7 +58,6 @@ public class CommonLargeTableController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('commonLargeTable:add')")
 	@ResponseBody
 	public Object add(@Valid CommonLargeTable commonLargeTable) {
 		return status(commonLargeTableService.save(commonLargeTable));
@@ -71,7 +67,6 @@ public class CommonLargeTableController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('commonLargeTable:delete')")
 	@ResponseBody
 	public Object delete(CommonLargeTable commonLargeTable) {
 		return status(commonLargeTableService.removeById(commonLargeTable));
@@ -91,7 +86,6 @@ public class CommonLargeTableController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('commonLargeTable:edit')")
 	@ResponseBody
 	public Object edit(@Valid CommonLargeTable commonLargeTable) {
 		return status(commonLargeTableService.updateById(commonLargeTable));

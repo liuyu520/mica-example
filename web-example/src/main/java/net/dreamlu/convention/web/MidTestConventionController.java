@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class MidTestConventionController extends BaseController {
 	private IMidTestConventionService midTestConventionService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('midTestConvention:manager')")
 	public String manager() {
 		return "system/midTestConvention/midTestConventionList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('midTestConvention:dataGrid')")
 	@ResponseBody
 	public EasyPage<MidTestConvention> dataGrid(MidTestConvention midTestConvention, PageVO pageVO) {
 		QueryWrapper<MidTestConvention> ew = new QueryWrapper<MidTestConvention>(midTestConvention);
@@ -62,7 +59,6 @@ public class MidTestConventionController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('midTestConvention:add')")
 	@ResponseBody
 	public Object add(@Valid MidTestConvention midTestConvention) {
 		return status(midTestConventionService.save(midTestConvention));
@@ -72,7 +68,6 @@ public class MidTestConventionController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('midTestConvention:delete')")
 	@ResponseBody
 	public Object delete(MidTestConvention midTestConvention) {
 		return status(midTestConventionService.removeById(midTestConvention));
@@ -92,7 +87,6 @@ public class MidTestConventionController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('midTestConvention:edit')")
 	@ResponseBody
 	public Object edit(@Valid MidTestConvention midTestConvention) {
 		return status(midTestConventionService.updateById(midTestConvention));

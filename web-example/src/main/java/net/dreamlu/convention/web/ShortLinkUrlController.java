@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class ShortLinkUrlController extends BaseController {
 	private IShortLinkUrlService shortLinkUrlService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('shortLinkUrl:manager')")
 	public String manager() {
 		return "system/shortLinkUrl/shortLinkUrlList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('shortLinkUrl:dataGrid')")
 	@ResponseBody
 	public EasyPage<ShortLinkUrl> dataGrid(ShortLinkUrl shortLinkUrl, PageVO pageVO) {
 		QueryWrapper<ShortLinkUrl> ew = new QueryWrapper<ShortLinkUrl>(shortLinkUrl);
@@ -62,7 +59,6 @@ public class ShortLinkUrlController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('shortLinkUrl:add')")
 	@ResponseBody
 	public Object add(@Valid ShortLinkUrl shortLinkUrl) {
 		return status(shortLinkUrlService.save(shortLinkUrl));
@@ -72,7 +68,6 @@ public class ShortLinkUrlController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('shortLinkUrl:delete')")
 	@ResponseBody
 	public Object delete(ShortLinkUrl shortLinkUrl) {
 		return status(shortLinkUrlService.removeById(shortLinkUrl));
@@ -92,7 +87,6 @@ public class ShortLinkUrlController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('shortLinkUrl:edit')")
 	@ResponseBody
 	public Object edit(@Valid ShortLinkUrl shortLinkUrl) {
 		return status(shortLinkUrlService.updateById(shortLinkUrl));

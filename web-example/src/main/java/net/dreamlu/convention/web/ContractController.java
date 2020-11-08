@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class ContractController extends BaseController {
 	private IContractService contractService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('contract:manager')")
 	public String manager() {
 		return "system/contract/contractList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('contract:dataGrid')")
 	@ResponseBody
 	public EasyPage<Contract> dataGrid(Contract contract, PageVO pageVO) {
 		QueryWrapper<Contract> ew = new QueryWrapper<Contract>(contract);
@@ -62,7 +59,6 @@ public class ContractController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('contract:add')")
 	@ResponseBody
 	public Object add(@Valid Contract contract) {
 		return status(contractService.save(contract));
@@ -72,7 +68,6 @@ public class ContractController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('contract:delete')")
 	@ResponseBody
 	public Object delete(Contract contract) {
 		return status(contractService.removeById(contract));
@@ -92,7 +87,6 @@ public class ContractController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('contract:edit')")
 	@ResponseBody
 	public Object edit(@Valid Contract contract) {
 		return status(contractService.updateById(contract));

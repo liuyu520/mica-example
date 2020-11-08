@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class SendSmsRecordController extends BaseController {
 	private ISendSmsRecordService sendSmsRecordService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('sendSmsRecord:manager')")
 	public String manager() {
 		return "system/sendSmsRecord/sendSmsRecordList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('sendSmsRecord:dataGrid')")
 	@ResponseBody
 	public EasyPage<SendSmsRecord> dataGrid(SendSmsRecord sendSmsRecord, PageVO pageVO) {
 		QueryWrapper<SendSmsRecord> ew = new QueryWrapper<SendSmsRecord>(sendSmsRecord);
@@ -62,7 +59,6 @@ public class SendSmsRecordController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('sendSmsRecord:add')")
 	@ResponseBody
 	public Object add(@Valid SendSmsRecord sendSmsRecord) {
 		return status(sendSmsRecordService.save(sendSmsRecord));
@@ -72,7 +68,6 @@ public class SendSmsRecordController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('sendSmsRecord:delete')")
 	@ResponseBody
 	public Object delete(SendSmsRecord sendSmsRecord) {
 		return status(sendSmsRecordService.removeById(sendSmsRecord));
@@ -92,7 +87,6 @@ public class SendSmsRecordController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('sendSmsRecord:edit')")
 	@ResponseBody
 	public Object edit(@Valid SendSmsRecord sendSmsRecord) {
 		return status(sendSmsRecordService.updateById(sendSmsRecord));

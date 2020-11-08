@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class JobCandidateItemController extends BaseController {
 	private IJobCandidateItemService jobCandidateItemService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('jobCandidateItem:manager')")
 	public String manager() {
 		return "system/jobCandidateItem/jobCandidateItemList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('jobCandidateItem:dataGrid')")
 	@ResponseBody
 	public EasyPage<JobCandidateItem> dataGrid(JobCandidateItem jobCandidateItem, PageVO pageVO) {
 		QueryWrapper<JobCandidateItem> ew = new QueryWrapper<JobCandidateItem>(jobCandidateItem);
@@ -62,7 +59,6 @@ public class JobCandidateItemController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('jobCandidateItem:add')")
 	@ResponseBody
 	public Object add(@Valid JobCandidateItem jobCandidateItem) {
 		return status(jobCandidateItemService.save(jobCandidateItem));
@@ -72,7 +68,6 @@ public class JobCandidateItemController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('jobCandidateItem:delete')")
 	@ResponseBody
 	public Object delete(JobCandidateItem jobCandidateItem) {
 		return status(jobCandidateItemService.removeById(jobCandidateItem));
@@ -92,7 +87,6 @@ public class JobCandidateItemController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('jobCandidateItem:edit')")
 	@ResponseBody
 	public Object edit(@Valid JobCandidateItem jobCandidateItem) {
 		return status(jobCandidateItemService.updateById(jobCandidateItem));

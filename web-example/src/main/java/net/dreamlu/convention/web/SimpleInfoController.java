@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class SimpleInfoController extends BaseController {
 	private ISimpleInfoService simpleInfoService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('simpleInfo:manager')")
 	public String manager() {
 		return "system/simpleInfo/simpleInfoList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('simpleInfo:dataGrid')")
 	@ResponseBody
 	public EasyPage<SimpleInfo> dataGrid(SimpleInfo simpleInfo, PageVO pageVO) {
 		QueryWrapper<SimpleInfo> ew = new QueryWrapper<SimpleInfo>(simpleInfo);
@@ -62,7 +59,6 @@ public class SimpleInfoController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('simpleInfo:add')")
 	@ResponseBody
 	public Object add(@Valid SimpleInfo simpleInfo) {
 		return status(simpleInfoService.save(simpleInfo));
@@ -72,7 +68,6 @@ public class SimpleInfoController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('simpleInfo:delete')")
 	@ResponseBody
 	public Object delete(SimpleInfo simpleInfo) {
 		return status(simpleInfoService.removeById(simpleInfo));
@@ -92,7 +87,6 @@ public class SimpleInfoController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('simpleInfo:edit')")
 	@ResponseBody
 	public Object edit(@Valid SimpleInfo simpleInfo) {
 		return status(simpleInfoService.updateById(simpleInfo));

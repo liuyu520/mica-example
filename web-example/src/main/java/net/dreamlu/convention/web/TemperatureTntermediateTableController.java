@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class TemperatureTntermediateTableController extends BaseController {
 	private ITemperatureTntermediateTableService temperatureTntermediateTableService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('temperatureTntermediateTable:manager')")
 	public String manager() {
 		return "system/temperatureTntermediateTable/temperatureTntermediateTableList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('temperatureTntermediateTable:dataGrid')")
 	@ResponseBody
 	public EasyPage<TemperatureTntermediateTable> dataGrid(TemperatureTntermediateTable temperatureTntermediateTable, PageVO pageVO) {
 		QueryWrapper<TemperatureTntermediateTable> ew = new QueryWrapper<TemperatureTntermediateTable>(temperatureTntermediateTable);
@@ -62,7 +59,6 @@ public class TemperatureTntermediateTableController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('temperatureTntermediateTable:add')")
 	@ResponseBody
 	public Object add(@Valid TemperatureTntermediateTable temperatureTntermediateTable) {
 		return status(temperatureTntermediateTableService.save(temperatureTntermediateTable));
@@ -72,7 +68,6 @@ public class TemperatureTntermediateTableController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('temperatureTntermediateTable:delete')")
 	@ResponseBody
 	public Object delete(TemperatureTntermediateTable temperatureTntermediateTable) {
 		return status(temperatureTntermediateTableService.removeById(temperatureTntermediateTable));
@@ -92,7 +87,6 @@ public class TemperatureTntermediateTableController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('temperatureTntermediateTable:edit')")
 	@ResponseBody
 	public Object edit(@Valid TemperatureTntermediateTable temperatureTntermediateTable) {
 		return status(temperatureTntermediateTableService.updateById(temperatureTntermediateTable));

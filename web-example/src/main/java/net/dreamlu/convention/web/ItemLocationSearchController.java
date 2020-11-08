@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 
@@ -35,13 +34,11 @@ public class ItemLocationSearchController extends BaseController {
 	private IItemLocationSearchService itemLocationSearchService;
 
 	@GetMapping("/manager")
-	@PreAuthorize("@sec.hasPermission('itemLocationSearch:manager')")
 	public String manager() {
 		return "system/itemLocationSearch/itemLocationSearchList";
 	}
 
 	@PostMapping("/dataGrid")
-	@PreAuthorize("@sec.hasPermission('itemLocationSearch:dataGrid')")
 	@ResponseBody
 	public EasyPage<ItemLocationSearch> dataGrid(ItemLocationSearch itemLocationSearch, PageVO pageVO) {
 		QueryWrapper<ItemLocationSearch> ew = new QueryWrapper<ItemLocationSearch>(itemLocationSearch);
@@ -62,7 +59,6 @@ public class ItemLocationSearchController extends BaseController {
 	 * 添加页面-
 	 */
 	@PostMapping("/add")
-	@PreAuthorize("@sec.hasPermission('itemLocationSearch:add')")
 	@ResponseBody
 	public Object add(@Valid ItemLocationSearch itemLocationSearch) {
 		return status(itemLocationSearchService.save(itemLocationSearch));
@@ -72,7 +68,6 @@ public class ItemLocationSearchController extends BaseController {
 	 * 删除-
 	 */
 	@PostMapping("/delete")
-	@PreAuthorize("@sec.hasPermission('itemLocationSearch:delete')")
 	@ResponseBody
 	public Object delete(ItemLocationSearch itemLocationSearch) {
 		return status(itemLocationSearchService.removeById(itemLocationSearch));
@@ -92,7 +87,6 @@ public class ItemLocationSearchController extends BaseController {
 	 * 编辑-
 	 */
 	@PostMapping("/edit")
-	@PreAuthorize("@sec.hasPermission('itemLocationSearch:edit')")
 	@ResponseBody
 	public Object edit(@Valid ItemLocationSearch itemLocationSearch) {
 		return status(itemLocationSearchService.updateById(itemLocationSearch));
