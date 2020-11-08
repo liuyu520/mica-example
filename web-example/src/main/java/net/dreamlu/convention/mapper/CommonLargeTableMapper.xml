@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dreamlu.convention.mapper.CommonLargeTableMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="net.dreamlu.convention.model.CommonLargeTable">
+        <id column="id" property="id"/>
+        <result column="column01" property="column01"/>
+        <result column="column02" property="column02"/>
+        <result column="column03" property="column03"/>
+        <result column="column04" property="column04"/>
+        <result column="column05" property="column05"/>
+        <result column="column06" property="column06"/>
+        <result column="column07" property="column07"/>
+        <result column="column08" property="column08"/>
+        <result column="column09" property="column09"/>
+        <result column="column10" property="column10"/>
+        <result column="column11" property="column11"/>
+        <result column="column12" property="column12"/>
+        <result column="column13" property="column13"/>
+        <result column="column14" property="column14"/>
+        <result column="column15" property="column15"/>
+        <result column="column16" property="column16"/>
+        <result column="column17" property="column17"/>
+        <result column="column18" property="column18"/>
+        <result column="column19" property="column19"/>
+        <result column="column20" property="column20"/>
+        <result column="column21" property="column21"/>
+        <result column="column22_int" property="column22Int"/>
+        <result column="column23_int" property="column23Int"/>
+        <result column="column24_int" property="column24Int"/>
+        <result column="column25" property="column25"/>
+        <result column="column26" property="column26"/>
+        <result column="column27_time" property="column27Time"/>
+        <result column="column28_time" property="column28Time"/>
+        <result column="column29_time" property="column29Time"/>
+        <result column="column30_time" property="column30Time"/>
+        <result column="column31_date" property="column31Date"/>
+        <result column="column32_time" property="column32Time"/>
+        <result column="column33_time" property="column33Time"/>
+        <result column="column34_char" property="column34Char"/>
+        <result column="column35_char" property="column35Char"/>
+        <result column="column36_char" property="column36Char"/>
+        <result column="column37_byte" property="column37Byte"/>
+        <result column="column38_byte" property="column38Byte"/>
+        <result column="column39_long" property="column39Long"/>
+        <result column="column40_long" property="column40Long"/>
+        <result column="column41_long" property="column41Long"/>
+        <result column="column42_long" property="column42Long"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="createTime" property="createTime"/>
+        <result column="createDay" property="createDay"/>
+        <result column="updateDay" property="updateDay"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="column32_date" property="column32Date"/>
+        <result column="column33_date" property="column33Date"/>
+        <result column="type2" property="type2"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, column01, column02, column03, column04, column05, column06, column07, column08, column09, column10, column11, column12, column13, column14, column15, column16, column17, column18, column19, column20, column21, column22_int, column23_int, column24_int, column25, column26, column27_time, column28_time, column29_time, column30_time, column31_date, column32_time, column33_time, column34_char, column35_char, column36_char, column37_byte, column38_byte, column39_long, column40_long, column41_long, column42_long, updateTime, createTime, createDay, updateDay, is_deleted, column32_date, column33_date, type2
+    </sql>
+
+</mapper>

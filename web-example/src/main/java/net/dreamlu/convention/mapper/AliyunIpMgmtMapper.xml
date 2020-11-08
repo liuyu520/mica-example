@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dreamlu.convention.mapper.AliyunIpMgmtMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="net.dreamlu.convention.model.AliyunIpMgmt">
+        <id column="id" property="id"/>
+        <result column="ip" property="ip"/>
+        <result column="neiwangIp" property="neiwangIp"/>
+        <result column="name" property="name"/>
+        <result column="port" property="port"/>
+        <result column="loginUser" property="loginUser"/>
+        <result column="passwd" property="passwd"/>
+        <result column="description" property="description"/>
+        <result column="networkLoginUser" property="networkLoginUser"/>
+        <result column="location" property="location"/>
+        <result column="reservedOne" property="reservedOne"/>
+        <result column="reserved2" property="reserved2"/>
+        <result column="reserved3" property="reserved3"/>
+        <result column="reserved4" property="reserved4"/>
+        <result column="reserved5" property="reserved5"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="createTime" property="createTime"/>
+        <result column="createDay" property="createDay"/>
+        <result column="updateDay" property="updateDay"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, ip, neiwangIp, name, port, loginUser, passwd, description, networkLoginUser, location, reservedOne, reserved2, reserved3, reserved4, reserved5, updateTime, createTime, createDay, updateDay
+    </sql>
+
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dreamlu.convention.mapper.PunchInMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="net.dreamlu.convention.model.PunchIn">
+        <id column="id" property="id"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="status" property="status"/>
+        <result column="createTime" property="createTime"/>
+        <result column="punchInTime" property="punchInTime"/>
+        <result column="userId" property="userId"/>
+        <result column="description" property="description"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, updateTime, status, createTime, punchInTime, userId, description
+    </sql>
+
+</mapper>

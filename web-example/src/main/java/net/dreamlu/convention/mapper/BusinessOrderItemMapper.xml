@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dreamlu.convention.mapper.BusinessOrderItemMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="net.dreamlu.convention.model.BusinessOrderItem">
+        <id column="id" property="id"/>
+        <result column="createDay" property="createDay"/>
+        <result column="createTime" property="createTime"/>
+        <result column="createTimestamp" property="createTimestamp"/>
+        <result column="orderNo" property="orderNo"/>
+        <result column="reserved" property="reserved"/>
+        <result column="status" property="status"/>
+        <result column="totalPrice" property="totalPrice"/>
+        <result column="updateDay" property="updateDay"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="updateTimestamp" property="updateTimestamp"/>
+        <result column="price" property="price"/>
+        <result column="productBaseInfo_id" property="productbaseinfoId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, createDay, createTime, createTimestamp, orderNo, reserved, status, totalPrice, updateDay, updateTime, updateTimestamp, price, productBaseInfo_id
+    </sql>
+
+</mapper>

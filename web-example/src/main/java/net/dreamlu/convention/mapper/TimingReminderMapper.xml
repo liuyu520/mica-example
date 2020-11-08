@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dreamlu.convention.mapper.TimingReminderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="net.dreamlu.convention.model.TimingReminder">
+        <id column="id" property="id"/>
+        <result column="description" property="description"/>
+        <result column="timingType" property="timingType"/>
+        <result column="actionType" property="actionType"/>
+        <result column="cron" property="cron"/>
+        <result column="access_daytime" property="accessDaytime"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="createTime" property="createTime"/>
+        <result column="status" property="status"/>
+        <result column="remindTimes" property="remindTimes"/>
+        <result column="group_uuid" property="groupUuid"/>
+        <result column="reminder_type" property="reminderType"/>
+        <result column="manyDays" property="manyDays"/>
+        <result column="memoryCurveId" property="memoryCurveId"/>
+        <result column="forTest" property="forTest"/>
+        <result column="fromId" property="fromId"/>
+        <result column="fromGroupUuid" property="fromGroupUuid"/>
+        <result column="remark" property="remark"/>
+        <result column="contact_mobile" property="contactMobile"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, description, timingType, actionType, cron, access_daytime, updateTime, createTime, status, remindTimes, group_uuid, reminder_type, manyDays, memoryCurveId, forTest, fromId, fromGroupUuid, remark, contact_mobile
+    </sql>
+
+</mapper>

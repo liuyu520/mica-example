@@ -54,6 +54,11 @@
             <artifactId>mica-plus-social</artifactId>
             <version>${version}</version>
         </dependency>-->
+        <dependency>
+            <groupId>net.dreamlu</groupId>
+            <artifactId>mica-plus-mybatis</artifactId>
+            <version>1.2.2</version>
+        </dependency>
     </dependencies>
 
 </project>

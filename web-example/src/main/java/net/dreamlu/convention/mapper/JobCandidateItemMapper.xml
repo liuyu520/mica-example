@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dreamlu.convention.mapper.JobCandidateItemMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="net.dreamlu.convention.model.JobCandidateItem">
+        <id column="id" property="id"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="status" property="status"/>
+        <result column="createTime" property="createTime"/>
+        <result column="realName" property="realName"/>
+        <result column="staffNo" property="staffNo"/>
+        <result column="mobile" property="mobile"/>
+        <result column="description" property="description"/>
+        <result column="remark" property="remark"/>
+        <result column="gradeLevel" property="gradeLevel"/>
+        <result column="workYears" property="workYears"/>
+        <result column="recruitSpecialCity" property="recruitSpecialCity"/>
+        <result column="qualityRank" property="qualityRank"/>
+        <result column="url" property="url"/>
+        <result column="workTitle" property="workTitle"/>
+        <result column="interview_time" property="interviewTime"/>
+        <result column="reservedOne" property="reservedOne"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="reserved2" property="reserved2"/>
+        <result column="reserved3" property="reserved3"/>
+        <result column="reserved4" property="reserved4"/>
+        <result column="reserved5" property="reserved5"/>
+        <result column="reserved6" property="reserved6"/>
+        <result column="reserved7" property="reserved7"/>
+        <result column="reserved8" property="reserved8"/>
+        <result column="reserved9" property="reserved9"/>
+        <result column="reserved10" property="reserved10"/>
+        <result column="reserved11" property="reserved11"/>
+        <result column="reserved12" property="reserved12"/>
+        <result column="email" property="email"/>
+        <result column="weixinNo" property="weixinNo"/>
+        <result column="isHighQuality" property="isHighQuality"/>
+        <result column="specialCase" property="specialCase"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, updateTime, status, createTime, realName, staffNo, mobile, description, remark, gradeLevel, workYears, recruitSpecialCity, qualityRank, url, workTitle, interview_time, reservedOne, is_deleted, reserved2, reserved3, reserved4, reserved5, reserved6, reserved7, reserved8, reserved9, reserved10, reserved11, reserved12, email, weixinNo, isHighQuality, specialCase
+    </sql>
+
+</mapper>

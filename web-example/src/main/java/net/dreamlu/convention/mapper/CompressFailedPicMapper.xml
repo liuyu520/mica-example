@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dreamlu.convention.mapper.CompressFailedPicMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="net.dreamlu.convention.model.CompressFailedPic">
+        <id column="id" property="id"/>
+        <result column="cause" property="cause"/>
+        <result column="failed_time" property="failedTime"/>
+        <result column="original_size" property="originalSize"/>
+        <result column="pic_path" property="picPath"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, cause, failed_time, original_size, pic_path
+    </sql>
+
+</mapper>

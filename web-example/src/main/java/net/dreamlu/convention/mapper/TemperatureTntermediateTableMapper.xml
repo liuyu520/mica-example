@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dreamlu.convention.mapper.TemperatureTntermediateTableMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="net.dreamlu.convention.model.TemperatureTntermediateTable">
+        <id column="id" property="id"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="createTime" property="createTime"/>
+        <result column="createDay" property="createDay"/>
+        <result column="updateDay" property="updateDay"/>
+        <result column="idList" property="idList"/>
+        <result column="realName" property="realName"/>
+        <result column="mobile" property="mobile"/>
+        <result column="temperatureList" property="temperatureList"/>
+        <result column="measuringTimeList" property="measuringTimeList"/>
+        <result column="timeSlotList" property="timeSlotList"/>
+        <result column="reservedOne" property="reservedOne"/>
+        <result column="updateTimeList" property="updateTimeList"/>
+        <result column="is_return_to_workcity" property="isReturnToWorkcity"/>
+        <result column="deptName" property="deptName"/>
+        <result column="isReturn2workCity" property="isReturn2workCity"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, updateTime, createTime, createDay, updateDay, idList, realName, mobile, temperatureList, measuringTimeList, timeSlotList, reservedOne, updateTimeList, is_return_to_workcity, deptName, isReturn2workCity
+    </sql>
+
+</mapper>

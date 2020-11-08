@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dreamlu.convention.mapper.RecruitRequirementsItemMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="net.dreamlu.convention.model.RecruitRequirementsItem">
+        <id column="id" property="id"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="status" property="status"/>
+        <result column="createTime" property="createTime"/>
+        <result column="createDay" property="createDay"/>
+        <result column="mobile" property="mobile"/>
+        <result column="description" property="description"/>
+        <result column="requirements" property="requirements"/>
+        <result column="recruitmentTitle" property="recruitmentTitle"/>
+        <result column="timeLimit" property="timeLimit"/>
+        <result column="contractPeople" property="contractPeople"/>
+        <result column="workAddress" property="workAddress"/>
+        <result column="content" property="content"/>
+        <result column="reservedOne" property="reservedOne"/>
+        <result column="reserved2" property="reserved2"/>
+        <result column="reserved3" property="reserved3"/>
+        <result column="reserved4" property="reserved4"/>
+        <result column="reserved5" property="reserved5"/>
+        <result column="is_deleted" property="isDeleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, updateTime, status, createTime, createDay, mobile, description, requirements, recruitmentTitle, timeLimit, contractPeople, workAddress, content, reservedOne, reserved2, reserved3, reserved4, reserved5, is_deleted
+    </sql>
+
+</mapper>

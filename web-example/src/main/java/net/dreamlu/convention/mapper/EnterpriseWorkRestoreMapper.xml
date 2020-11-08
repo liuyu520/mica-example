@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dreamlu.convention.mapper.EnterpriseWorkRestoreMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="net.dreamlu.convention.model.EnterpriseWorkRestore">
+        <id column="id" property="id"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="createTime" property="createTime"/>
+        <result column="createDay" property="createDay"/>
+        <result column="updateDay" property="updateDay"/>
+        <result column="appKey" property="appKey"/>
+        <result column="processCode" property="processCode"/>
+        <result column="appZhName" property="appZhName"/>
+        <result column="processZhName" property="processZhName"/>
+        <result column="yidaAppType" property="yidaAppType"/>
+        <result column="yidaApiToken" property="yidaApiToken"/>
+        <result column="urlForTest" property="urlForTest"/>
+        <result column="dataSearchUrl" property="dataSearchUrl"/>
+        <result column="processMgmtUrl" property="processMgmtUrl"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="reservedOne" property="reservedOne"/>
+        <result column="reserved2" property="reserved2"/>
+        <result column="reserved3" property="reserved3"/>
+        <result column="reserved4" property="reserved4"/>
+        <result column="reserved5" property="reserved5"/>
+        <result column="reserved6" property="reserved6"/>
+        <result column="reserved7" property="reserved7"/>
+        <result column="reserved8" property="reserved8"/>
+        <result column="reserved9" property="reserved9"/>
+        <result column="reserved10" property="reserved10"/>
+        <result column="reserved11" property="reserved11"/>
+        <result column="reserved12" property="reserved12"/>
+        <result column="applyCity" property="applyCity"/>
+        <result column="url_for_test" property="urlForTest"/>
+        <result column="dataAuthQueryRole" property="dataAuthQueryRole"/>
+        <result column="dataAuthExportRole" property="dataAuthExportRole"/>
+        <result column="role_binding_json" property="roleBindingJson"/>
+        <result column="appUuid" property="appUuid"/>
+        <result column="processDataStatisticsUrl" property="processDataStatisticsUrl"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, updateTime, createTime, createDay, updateDay, appKey, processCode, appZhName, processZhName, yidaAppType, yidaApiToken, urlForTest, dataSearchUrl, processMgmtUrl, is_deleted, reservedOne, reserved2, reserved3, reserved4, reserved5, reserved6, reserved7, reserved8, reserved9, reserved10, reserved11, reserved12, applyCity, url_for_test, dataAuthQueryRole, dataAuthExportRole, role_binding_json, appUuid, processDataStatisticsUrl
+    </sql>
+
+</mapper>

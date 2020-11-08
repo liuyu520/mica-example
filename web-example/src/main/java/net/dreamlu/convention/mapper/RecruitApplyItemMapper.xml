@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dreamlu.convention.mapper.RecruitApplyItemMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="net.dreamlu.convention.model.RecruitApplyItem">
+        <id column="id" property="id"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="status" property="status"/>
+        <result column="createTime" property="createTime"/>
+        <result column="realName" property="realName"/>
+        <result column="staffNo" property="staffNo"/>
+        <result column="mobile" property="mobile"/>
+        <result column="recruitRequirementsItemId" property="recruitRequirementsItemId"/>
+        <result column="picUrl" property="picUrl"/>
+        <result column="birthPlace" property="birthPlace"/>
+        <result column="realAddress" property="realAddress"/>
+        <result column="age" property="age"/>
+        <result column="sex2" property="sex2"/>
+        <result column="reasons" property="reasons"/>
+        <result column="is_just_for_test" property="isJustForTest"/>
+        <result column="isMarried" property="isMarried"/>
+        <result column="workTitle" property="workTitle"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="reservedOne" property="reservedOne"/>
+        <result column="reserved2" property="reserved2"/>
+        <result column="reserved3" property="reserved3"/>
+        <result column="reserved4" property="reserved4"/>
+        <result column="reserved5" property="reserved5"/>
+        <result column="reserved6" property="reserved6"/>
+        <result column="reserved7" property="reserved7"/>
+        <result column="reserved8" property="reserved8"/>
+        <result column="reserved9" property="reserved9"/>
+        <result column="reserved10" property="reserved10"/>
+        <result column="reserved11" property="reserved11"/>
+        <result column="reserved12" property="reserved12"/>
+        <result column="createDay" property="createDay"/>
+        <result column="email" property="email"/>
+        <result column="attachment_field" property="attachmentField"/>
+        <result column="description" property="description"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, updateTime, status, createTime, realName, staffNo, mobile, recruitRequirementsItemId, picUrl, birthPlace, realAddress, age, sex2, reasons, is_just_for_test, isMarried, workTitle, is_deleted, reservedOne, reserved2, reserved3, reserved4, reserved5, reserved6, reserved7, reserved8, reserved9, reserved10, reserved11, reserved12, createDay, email, attachment_field, description
+    </sql>
+
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dreamlu.convention.mapper.TestToBoyMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="net.dreamlu.convention.model.TestToBoy">
+        <id column="id" property="id"/>
+        <result column="testcase" property="testcase"/>
+        <result column="aliass" property="aliass"/>
+        <result column="alias2" property="alias2"/>
+        <result column="best_convention_id" property="bestConventionId"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="stars" property="stars"/>
+        <result column="status" property="status"/>
+        <result column="userId" property="userId"/>
+        <result column="only_i_see" property="onlyISee"/>
+        <result column="type" property="type"/>
+        <result column="encrypted" property="encrypted"/>
+        <result column="key2" property="key2"/>
+        <result column="order2" property="order2"/>
+        <result column="latestAccessDetailTime" property="latestAccessDetailTime"/>
+        <result column="createTime" property="createTime"/>
+        <result column="alias" property="alias"/>
+        <result column="is_offen" property="isOffen"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, testcase, aliass, alias2, best_convention_id, update_time, stars, status, userId, only_i_see, type, encrypted, key2, order2, latestAccessDetailTime, createTime, alias, is_offen
+    </sql>
+
+</mapper>

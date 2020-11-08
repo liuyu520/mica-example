@@ -14,6 +14,7 @@
         <mica.version>1.2.2</mica.version>
         <spring.cloud.version>Greenwich.SR4</spring.cloud.version>
         <spring.cloud.alibaba.version>2.1.1.RELEASE</spring.cloud.alibaba.version>
+        <mybatis-plus.version>3.3.1</mybatis-plus.version>
     </properties>
 
     <parent>
@@ -25,7 +26,7 @@
 
     <modules>
         <module>web-example</module>
-        <module>webflux-example</module>
+        <!--        <module>webflux-example</module>-->
     </modules>
 
     <dependencies>
@@ -73,6 +74,17 @@
         <dependency>
             <groupId>net.dreamlu</groupId>
             <artifactId>mica-boot-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.dreamlu</groupId>
+            <artifactId>mica-plus-mybatis</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>${mybatis-plus.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

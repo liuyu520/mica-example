@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dreamlu.convention.mapper.GirlMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="net.dreamlu.convention.model.Girl">
+        <id column="id" property="id"/>
+        <result column="age" property="age"/>
+        <result column="birthday" property="birthday"/>
+        <result column="college" property="college"/>
+        <result column="constellation" property="constellation"/>
+        <result column="createTime" property="createTime"/>
+        <result column="description" property="description"/>
+        <result column="hate" property="hate"/>
+        <result column="hobby" property="hobby"/>
+        <result column="hometown" property="hometown"/>
+        <result column="job" property="job"/>
+        <result column="name" property="name"/>
+        <result column="nickName" property="nickName"/>
+        <result column="pics" property="pics"/>
+        <result column="portrait" property="portrait"/>
+        <result column="status" property="status"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="work_place" property="workPlace"/>
+        <result column="height" property="height"/>
+        <result column="weight" property="weight"/>
+        <result column="animal_sign" property="animalSign"/>
+        <result column="nation" property="nation"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, age, birthday, college, constellation, createTime, description, hate, hobby, hometown, job, name, nickName, pics, portrait, status, updateTime, work_place, height, weight, animal_sign, nation
+    </sql>
+
+</mapper>

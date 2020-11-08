@@ -10,3 +10,20 @@ mica:
       client-id: dingoab7pkxxteufaoc50x
       client-secret: pclr4hldAHhhlZxQmsxdLNMhrYpl5bnCFmX56zAYT8BgdqDF-dVhCORfaTZoO2hz
       redirect-uri: http://frp.dreamlu.net/callback
+
+## mybatis
+mybatis-plus:
+  configuration:
+    cache-enabled: false
+    map-underscore-to-camel-case: true
+  typeAliasesPackage: net.dreamlu.**.model
+  mapper-locations: classpath:net/dreamlu/**/mapper/*Mapper.xml
+  global-config:
+    db-config:
+      id-type: auto
+      select-strategy: not_empty
+      insert-strategy: not_empty
+      update-strategy: not_null
+      table-underline: true
+      logic-delete-value: 0
+      logic-not-delete-value: 1

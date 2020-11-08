@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dreamlu.convention.mapper.AlipaySuccessNotifyAsyncMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="net.dreamlu.convention.model.AlipaySuccessNotifyAsync">
+        <id column="id" property="id"/>
+        <result column="app_id" property="appId"/>
+        <result column="auth_app_id" property="authAppId"/>
+        <result column="body" property="body"/>
+        <result column="buyer_id" property="buyerId"/>
+        <result column="buyer_logon_id" property="buyerLogonId"/>
+        <result column="buyer_pay_amount" property="buyerPayAmount"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_payment" property="gmtPayment"/>
+        <result column="notify_id" property="notifyId"/>
+        <result column="notify_time" property="notifyTime"/>
+        <result column="notify_type" property="notifyType"/>
+        <result column="out_trade_no" property="outTradeNo"/>
+        <result column="reserved" property="reserved"/>
+        <result column="seller_email" property="sellerEmail"/>
+        <result column="seller_id" property="sellerId"/>
+        <result column="sign_type" property="signType"/>
+        <result column="subject" property="subject"/>
+        <result column="total_amount" property="totalAmount"/>
+        <result column="trade_no" property="tradeNo"/>
+        <result column="trade_status" property="tradeStatus"/>
+        <result column="version" property="version"/>
+        <result column="desc2" property="desc2"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, app_id, auth_app_id, body, buyer_id, buyer_logon_id, buyer_pay_amount, gmt_create, gmt_payment, notify_id, notify_time, notify_type, out_trade_no, reserved, seller_email, seller_id, sign_type, subject, total_amount, trade_no, trade_status, version, desc2
+    </sql>
+
+</mapper>
