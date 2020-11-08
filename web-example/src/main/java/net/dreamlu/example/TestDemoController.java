@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(description = "接口版本演示")
 public class TestDemoController {
 
+	/**
+	 * 测试版本共存
+	 * 优先使用方法上的版本v1.1
+	 */
 	@GetMapping("sayHello")
 	@UrlVersion("v1-0")
 	public String sayHello() {
