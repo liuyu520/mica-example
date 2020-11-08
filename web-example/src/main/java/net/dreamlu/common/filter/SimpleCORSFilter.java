@@ -45,8 +45,8 @@ public class SimpleCORSFilter implements Filter {
         //优先级 request > header
         String allOrigin = ObjectUtils.firstNonNull(request.getParameter("allowOrigin"), request.getHeader("Origin"), this.allowOriginDto.getAccessControlAllowOrigin());
         String message = "############## allOrigin :" + allOrigin;
-        log.warn(message);
-        System.out.println(message);
+//        log.warn(message);
+//        System.out.println(message);
         /*if (ValueWidget.isNullOrEmpty(allOrigin)) {
             allOrigin = ;
             if (ValueWidget.isNullOrEmpty(allOrigin)) {

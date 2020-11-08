@@ -37,7 +37,7 @@ public class GirlController extends BaseController {
 		return "system/girl/girlList";
 	}
 
-	@PostMapping("/dataGrid")
+	@RequestMapping("/dataGrid")
 	@ResponseBody
 	public EasyPage<Girl> dataGrid(Girl girl, PageVO pageVO) {
 		QueryWrapper<Girl> ew = new QueryWrapper<Girl>(girl);
