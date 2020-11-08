@@ -16,5 +16,4 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AccessLogServiceImpl extends ServiceImpl<AccessLogMapper, AccessLog> implements IAccessLogService {
-
 }

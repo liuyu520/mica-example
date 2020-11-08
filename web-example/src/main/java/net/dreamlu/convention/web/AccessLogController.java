@@ -7,6 +7,7 @@ import net.dreamlu.common.result.EasyPage;
 import net.dreamlu.common.result.PageVO;
 import net.dreamlu.convention.model.AccessLog;
 import net.dreamlu.convention.service.IAccessLogService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
-
-import net.dreamlu.convention.model.AccessLog;
-import net.dreamlu.convention.service.IAccessLogService;
-import net.dreamlu.common.base.BaseController;
 
 /**
  * <p>
