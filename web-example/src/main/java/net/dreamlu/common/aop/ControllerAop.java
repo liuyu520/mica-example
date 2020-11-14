@@ -1,5 +1,6 @@
 package net.dreamlu.common.aop;
 
+import com.common.util.SystemHWUtil;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -49,7 +50,7 @@ public class ControllerAop {
 			return jp.proceed();
 		} catch (Throwable throwable) {
 			String exceptionDetail = ExceptionUtils.getFullStackTrace(throwable);
-			throw new RuntimeException("未知异常!"/* + throwable.getMessage()+","+exceptionDetail*/, throwable);
+			throw new RuntimeException("未知异常!" + throwable.getMessage() + "," + SystemHWUtil.CRLF + exceptionDetail, throwable);
 		}
 	}
 }

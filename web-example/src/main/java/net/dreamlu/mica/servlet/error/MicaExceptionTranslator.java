@@ -1,5 +1,6 @@
 package net.dreamlu.mica.servlet.error;
 
+import com.common.util.SystemHWUtil;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.dreamlu.mica.common.error.MicaErrorEvent;
@@ -51,7 +52,7 @@ public class MicaExceptionTranslator {
 		log.error("未知异常", e);
 		// 发送：未知异常异常事件
 		publishEvent(e);
-		return R.fail(SystemCode.FAILURE);
+		return R.fail(SystemCode.FAILURE, SystemHWUtil.splitAndFilterString(e.getMessage(), 2000));
 	}
 
 	private void publishEvent(Throwable error) {
