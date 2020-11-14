@@ -88,6 +88,7 @@ public class GirlController extends BaseController {
 	@PostMapping("/edit")
 	@ResponseBody
 	public Object edit(@Valid Girl girl) {
-		return status(girlService.updateById(girl));
+		Object ret = status(girlService.updateById(girl));
+		return ret;
 	}
 }

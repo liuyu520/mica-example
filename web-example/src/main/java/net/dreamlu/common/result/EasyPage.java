@@ -35,9 +35,15 @@ public class EasyPage<T> {
 
 	private long total;
 	private List<T> rows;
+	/**
+	 * @author whuang
+	 * 我后来添加的
+	 */
+	private List<T> data;
 
 	private EasyPage(IPage<T> page) {
 		this.rows = page.getRecords();
+		this.data = rows;
 		this.total = page.getTotal();
 	}
 
