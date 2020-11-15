@@ -91,10 +91,10 @@
                     <groupId>org.springframework.data</groupId>
                     <artifactId>spring-data-redis</artifactId>
                 </exclusion>
-                <exclusion>
+               <!-- <exclusion>
                     <groupId>redis.clients</groupId>
                     <artifactId>jedis</artifactId>
-                </exclusion>
+                </exclusion>-->
             </exclusions>
         </dependency>
     </dependencies>
