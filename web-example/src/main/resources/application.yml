@@ -3,6 +3,8 @@ management:
     web:
       exposure:
         include: '*'
+  security: ## 禁用 /actuate
+    enabled: false
 
 mica:
   social:
