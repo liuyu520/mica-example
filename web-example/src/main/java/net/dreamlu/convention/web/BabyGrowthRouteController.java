@@ -26,7 +26,7 @@ import javax.validation.Valid;
  * @since 2020-11-15
  */
 @Controller
-@RequestMapping("/babyGrowthRoute")
+@RequestMapping("/baby")
 public class BabyGrowthRouteController extends BaseController {
 
 	@Autowired
@@ -66,7 +66,7 @@ public class BabyGrowthRouteController extends BaseController {
 	/**
 	 * 删除-
 	 */
-	@PostMapping("/delete")
+	@RequestMapping("/delete")
 //    @PreAuthorize("@sec.hasPermission('babyGrowthRoute:delete')")
 	@ResponseBody
 	public Object delete(BabyGrowthRoute babyGrowthRoute) {

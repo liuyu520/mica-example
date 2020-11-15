@@ -87,6 +87,14 @@
                     <groupId>org.springframework.amqp</groupId>
                     <artifactId>spring-rabbit</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.data</groupId>
+                    <artifactId>spring-data-redis</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>redis.clients</groupId>
+                    <artifactId>jedis</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
     </dependencies>
